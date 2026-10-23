@@ -58,3 +58,10 @@ no administrator-level installation was performed during development.
 ## Licence
 
 MIT. Free to use, modify and redistribute. The supplied installer is unsigned.
+
+## Creator and support
+
+Created by **Brett Martin Moore**. This program is free. Development funds are
+often limited; voluntary donations are welcome if you can afford to help.
+Open **Help > About** for Contact and Donations buttons, or email
+[bm069au@gmail.com](mailto:bm069au@gmail.com) to get in touch or ask how to donate.

@@ -92,3 +92,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
+Created by Brett Martin Moore. This program is free. If you can afford to help
+with development, voluntary donations are welcome. Use Help > About > Donations
+or contact bm069au@gmail.com to ask how to contribute.

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
@@ -16,6 +16,7 @@ public class Setup : Form {
     CheckBox desktop = new CheckBox();
     bool completed;
     public Setup() {
+        AppBranding.SetIcon(this);
         Text="Install Brew Log & Calculator";Size=new Size(650,390);MinimumSize=Size;MaximumSize=Size;StartPosition=FormStartPosition.CenterScreen;Font=new Font("Segoe UI",10);BackColor=Color.White;AutoScaleMode=AutoScaleMode.Dpi;
         var panel=new TableLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(22),ColumnCount=1,RowCount=6};Controls.Add(panel);
         panel.Controls.Add(new Label{Text="Brew Log & Calculator",Font=new Font("Segoe UI",18,FontStyle.Bold),Dock=DockStyle.Fill,AutoSize=true});
@@ -67,7 +68,7 @@ Remove-Item -LiteralPath $PSCommandPath
 ";
             string script=Path.Combine(target,"Uninstall.ps1");File.WriteAllText(script,uninstall,new UTF8Encoding(true));
             using(RegistryKey key=Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\BrewLogCalculator")) {
-                key.SetValue("DisplayName","Brew Log & Calculator");key.SetValue("DisplayVersion","1.0.0");key.SetValue("Publisher","Brett's local tools");key.SetValue("InstallLocation",target);key.SetValue("DisplayIcon",Path.Combine(target,"BrewLog.exe"));
+                key.SetValue("DisplayName","Brew Log & Calculator");key.SetValue("DisplayVersion","1.0.1");key.SetValue("Publisher","Brett Martin Moore");key.SetValue("InstallLocation",target);key.SetValue("DisplayIcon",Path.Combine(target,"BrewLog.exe"));
                 string ps=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System),@"WindowsPowerShell\v1.0\powershell.exe");key.SetValue("UninstallString","\""+ps+"\" -NoProfile -ExecutionPolicy Bypass -File \""+script+"\"");key.SetValue("NoModify",1,RegistryValueKind.DWord);key.SetValue("NoRepair",1,RegistryValueKind.DWord);
             }
             status.Text="Installed. Open Brew Log & Calculator from Start or your desktop.\nNormal use does not require administrator rights.";completed=true;install.Text="Close";install.Enabled=true;

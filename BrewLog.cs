@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -82,15 +82,21 @@ public class BrewForm : Form {
     TextBox report = new TextBox();
     TextBox readingSg = new TextBox(), readingTemp = new TextBox(), readingOther = new TextBox(), readingNote = new TextBox();
     public BrewForm(string file) {
-        dataPath = file;
+        dataPath = file; AppBranding.SetIcon(this);
         Text = "Brew Log & Calculator"; Font = new Font("Segoe UI", 10); BackColor = Color.White;
         Size = new Size(1060, 850); MinimumSize = new Size(860, 650); StartPosition = FormStartPosition.CenterScreen;
         AutoScaleMode = AutoScaleMode.Dpi;
+        var menu = new MenuStrip(); var helpMenu = new ToolStripMenuItem("Help");
+        helpMenu.DropDownItems.Add("Using Brew Log", null, delegate { Help(); });
+        helpMenu.DropDownItems.Add("About Brew Log", null, delegate { AppBranding.About(this); });
+        helpMenu.DropDownItems.Add("Contact", null, delegate { AppBranding.Contact(this, false); });
+        helpMenu.DropDownItems.Add("Donations", null, delegate { AppBranding.Contact(this, true); });
+        menu.Items.Add(helpMenu); MainMenuStrip = menu;
         try { book = BrewMath.Load(dataPath); }
         catch (Exception e) { book = new Logbook(); brokenStore = true; MessageBox.Show("The text file could not be read. It has NOT been overwritten.\n\nKeep a copy of it and its .bak file.\n\n" + e.Message, "Saved data needs attention"); }
         if (book.Batches.Count == 0) book.Batches.Add(new Batch());
         var root = new TableLayoutPanel { Dock = DockStyle.Fill, RowCount = 3, ColumnCount = 1, Padding = new Padding(12) };
-        root.RowStyles.Add(new RowStyle(SizeType.Absolute, 44)); root.RowStyles.Add(new RowStyle(SizeType.Percent, 100)); root.RowStyles.Add(new RowStyle(SizeType.Absolute, 28)); Controls.Add(root);
+        root.RowStyles.Add(new RowStyle(SizeType.Absolute, 44)); root.RowStyles.Add(new RowStyle(SizeType.Percent, 100)); root.RowStyles.Add(new RowStyle(SizeType.Absolute, 28)); Controls.Add(root); Controls.Add(menu);
         var bar = new FlowLayoutPanel { Dock = DockStyle.Fill, WrapContents = false };
         batches.DropDownStyle = ComboBoxStyle.DropDownList; batches.Width = 235;
         bar.Controls.Add(new Label { Text = "Batch", AutoSize = true, Padding = new Padding(0,7,4,0) }); bar.Controls.Add(batches);
