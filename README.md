@@ -5,7 +5,11 @@ other brews. No accounts, subscriptions, advertisements or paid APIs.
 
 ## Download
 
-Open this repository's **Releases** and download `BrewLogCalculator-Setup.exe`.
+**[Download BrewLogCalculator-Setup.exe](https://github.com/bm069au/brew-log-calculator/releases/latest/download/BrewLogCalculator-Setup.exe)**
+
+Double-click the setup file, approve Windows' permission prompt and click
+**Install**. Then open **Brew Log & Calculator** from Start or the desktop.
+No extraction, command line or build tools are needed to install it.
 The installer defaults to `C:\Program Files\Brew Log Calculator` and creates a
 Start menu shortcut, with an optional desktop shortcut. It needs administrator
 permission once; the application itself runs as an ordinary user.
