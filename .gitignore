@@ -1,0 +1,6 @@
+dist/
+checks/
+payload.zip
+BrewLog.txt
+BrewLog.txt.bak
+*.user
